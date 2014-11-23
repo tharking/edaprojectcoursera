@@ -11,6 +11,6 @@ library(plyr)
 plotdata <- ddply(datafiltered, .(year, type), summarize, sum = sum(Emissions))
 #create multifacet ggplot chart
 library(ggplot2)
-png("plot3.png")
-ggplot(plotdata, aes(year, sum)) + facet_grid(. ~ type) + geom_boxplot(aes(fill=type)) + labs(x="YEAR", y="Total Emissions") + guides(fill=F)
+png("plot3.png", width=1024, height=768, units='px')
+ggplot(plotdata, aes(year, sum)) + facet_grid(. ~ type) + geom_bar(stat = "identity", aes(fill=type)) + labs(x="YEAR", y="Total Emissions")
 dev.off()
